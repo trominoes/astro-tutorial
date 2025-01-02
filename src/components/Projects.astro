@@ -1,0 +1,56 @@
+---
+import { getCollection } from "astro:content";
+import Tile from "./Tile.astro";
+
+const allPosts = await getCollection("projects");
+
+allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<style>
+    .projects-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .projects-inner {
+        display: flex;
+        justify-content: center;
+    }
+
+    .projects-list {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        align-items: stretch;
+        gap: 40px;
+    }
+
+    @media screen and (max-width: 1270px) {
+        .projects-list {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+    @media screen and (max-width: 850px) {
+
+    }
+    @media screen and (max-width: 600px) {
+        .projects-list {
+            grid-template-columns: repeat(1, 1fr);
+            gap: 30px;
+        }
+    }
+    @media screen and (max-width: 400px) {
+
+    }
+</style>
+
+<div class="projects-container">
+    <div class="projects-inner">
+        <div class="projects-list">
+            {allPosts.map((post) => <Tile yaml={post.data} />)}
+        </div>
+    </div>
+</div>
+
+<!-- TODO: build on-click, open modal functionality here -->

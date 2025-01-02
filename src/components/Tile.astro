@@ -1,0 +1,68 @@
+---
+const { yaml } = Astro.props;
+
+const date = yaml.pubDate;
+const formatter = new Intl.DateTimeFormat("en-US", {
+    year: "numeric",
+    month: "long",
+});
+
+const formattedDate = formatter.format(date);
+---
+
+<style>
+    .tile-link {
+        text-decoration: none;
+        color: black;
+    }
+    
+    .project-tile {
+        height: 100%;
+        cursor: pointer;
+        padding: 30px;
+        box-sizing: border-box;
+        border-radius: 12px;
+        border: 1px solid #bbb;
+        background-color: #f3f7fb;
+        box-shadow: 0 5px 10px rgba(100, 100, 100, 0.3);
+        transition: transform 0.2s ease;
+    }
+
+    .project-tile:hover {
+        transform: scale(1.02);
+    }
+
+    .tile-title {
+        margin: 0px;
+        font-size: 1.4em;
+    }
+    .tile-date {
+        color: rgb(48, 48, 157);
+        margin: 0px;
+    }
+    .tile-desc {
+        margin: 0px;
+        margin-top: 7px;
+        font-size: 1em;
+    }
+
+    @media screen and (max-width: 1270px) {
+
+    }
+    @media screen and (max-width: 850px) {
+
+    }
+    @media screen and (max-width: 600px) {
+
+    }
+    @media screen and (max-width: 400px) {
+        
+    }
+</style>
+<a class="tile-link" href={yaml.url}>
+    <div class="project-tile">
+        <h2 class="tile-title">{yaml.title}</h2>
+        <p class="tertiary tile-date">{formattedDate}</p>
+        <p class="tile-desc">{yaml.desc}</p>
+    </div>
+</a>

@@ -1,0 +1,88 @@
+---
+const skills = [
+    "Python",
+    "Java",
+    "C++",
+    "Javascript",
+    "HTML",
+    "CSS",
+    "SQL",
+    "Office 365",
+    "Fusion 360",
+    "ArcGIS Pro",
+    "Adobe Lightroom",
+    "DaVinci Resolve",
+    "Photography",
+    "Baking",
+    "Gardening",
+    "French",
+    "Korean",
+    "Oboe",
+    "Piano",
+    "Word Hunt",
+    "Crossword solving",
+    "Pencil sketching",
+    "Occasional journalism activities",
+];
+---
+
+<style>
+    #skill-container {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin: 0px 5%;
+    }
+
+    .skill-tag {
+        background-color: #e2e6ea;
+        border-radius: 22px;
+        padding: 6px 12px;
+        margin: 5px 3px;
+        display: inline-block;
+        border: 2px solid #e2e6ea;
+        transition: border 0.15s ease;
+        font-size: 0.8em;
+    }
+
+    .skill-tag:hover {
+        cursor: default;
+    }
+
+    @media screen and (max-width: 600px) {
+      #skill-container {
+        margin: 0;
+      }
+    }
+
+</style>
+
+<div id="skill-container">
+    {skills.map((skill) => <div class="skill-tag">{skill}</div>)}
+</div>
+
+<script>
+    function getRandomColor() {
+      const colors = ["#f48cd1","#c192e3","#e86666","#f2ca54","#f7966f","#a6c52b","#2F9045","#48b9bb", "#30309d"];
+      let color = colors[Math.floor(Math.random() * colors.length)];
+      console.log(color);
+      return color;
+    }
+
+    // Select all elements with the class "skill-tag"
+    const skillTags = document.querySelectorAll<HTMLElement>('.skill-tag');
+
+    // Loop through each element and add a mouseover event listener
+    skillTags.forEach(tag => {
+      tag.addEventListener('mouseover', function() {
+        // Change the border color to a random color
+        tag.style.borderColor = getRandomColor();
+      });
+      tag.addEventListener('mouseout', function() {
+        // Change the border color to a random color
+        tag.style.borderColor = "#e2e6ea";
+      });
+    });
+</script>

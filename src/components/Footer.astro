@@ -1,17 +1,37 @@
 ---
-import Social from './Social.astro';
+import Social from "./Social.astro";
 ---
 
 <style>
+  footer {
+    gap: 1rem;
+    background-color: #ebeff3;
+    padding: 50px 6%;
+  }
+
+  .small-text {
+    font-size: 0.8em;
+  }
+
+  @media screen and (max-width: 600px) {
     footer {
       display: flex;
-      gap: 1rem;
-      margin-top: 2rem;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 0%;
+      gap: 0rem;
     }
-  </style>
+  }
+  @media screen and (max-width: 400px) {
+  }
+</style>
 
 <footer>
-    <Social platform="twitter" username="astrodotbuild" />
-    <Social platform="github" username="withastro" />
-    <Social platform="youtube" username="astrodotbuild" />
+  <div>
+    <Social platform="github" username="trominoes" />
+    <Social platform="linkedin" username="in/minoo-jang" />
+    <Social platform="youtube" username="@minooj3125" />
+  </div>
+  <p class="tertiary small-text">Minoo Jang. Built with Astro.</p>
 </footer>

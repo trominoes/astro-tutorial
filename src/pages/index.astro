@@ -1,9 +1,164 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Greeting from '../components/Greeting';
-const pageTitle = "Home Page";
+import Footer from "../components/Footer.astro";
+import Projects from "../components/Projects.astro";
+import Skills from "../components/Skills.astro";
+import "../styles/global.css";
+import "../styles/interactiveheader.css";
+const pageTitle = "trominoes";
 ---
-<BaseLayout pageTitle={pageTitle}>
-  <h2>My awesome blog subtitle</h2>
-  <Greeting client:load messages={["Hej", "Hallo", "Hola", "Habari"]} />
-</BaseLayout>
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/x-icon" href="/trominoes.png" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
+			rel="stylesheet"
+		/>
+		<script
+			src="https://kit.fontawesome.com/db289afb84.js"
+			crossorigin="anonymous"></script>
+		<title>{pageTitle}</title>
+	</head>
+	<body>
+		<div id="main">
+			<div class="header">
+				<div class="intro-elements">
+					<h1 class="intro-title">Minoo Jang</h1>
+					<p class="intro-slug">artist, engineer, stanford student</p>
+					<p class="intro-slug">---</p>
+				</div>
+
+				<svg
+					class="page-down-arrow"
+					xmlns="http://www.w3.org/2000/svg"
+					width="40"
+					height="40"
+					viewBox="0 0 40 40"
+				>
+					<g fill="none" stroke="#27272a" stroke-width="2">
+						<path d="M5,25 L20,31 L35,25"></path>
+					</g>
+				</svg>
+
+				<p class="graphic-click courier-heading">Click me!</p>
+
+				<svg
+					class="click-arrow"
+					width="100"
+					height="150"
+					viewBox="0 0 200 200"
+					xmlns="http://www.w3.org/2000/svg"
+				>
+					<path
+						d="M 100, 0
+							 C 100,40 50,100 20, 90
+							 C 0,80 60,0 60,90
+							 C 60,130 40,140 20,145"
+						fill="transparent"
+						stroke="#999999"
+						stroke-width="2"></path>
+
+					<polygon points="15,150 32,147 25,135" fill="#999999"
+					></polygon>
+				</svg>
+
+				<div class="graphic">
+					<div class="graphic-container">
+						<canvas class="bg" id="name-graphic"></canvas>
+						<script>
+							import "../scripts/isometric.js";
+						</script>
+					</div>
+				</div>
+			</div>
+
+			<div class="non-header">
+				<hr />
+				<div class="page-body">
+					<br />
+
+					<h2 style="font-size: 1.8em;">Hello!</h2>
+					<p class="about-text">
+						My name is <span class="bold">Minoo</span> and I'm an <span
+							class="bold"
+						>
+							undergrad (’28) at Stanford University.</span
+						>
+						When asked about my major, I often reply with questions of
+						my own: Math? Mechanical Engineering? CS, Earth Systems,
+						Design? In truth, I don't yet know exactly what I want to
+						do or how I should spend the majority of my time. That's
+						why I made this website&mdash;to help me map out the person
+						I want to be; to create and play and learn freely; to capture
+						in a portfolio my recent experiences, my thoughts,
+						and someday, my discovered personal truths and answers.
+					</p>
+
+					<p class="about-text italic">Send me mail at <a href="mailto:minooj@stanford.edu">minooj@stanford.edu</a>.</p>
+
+					<br />
+					<p class="center courier-heading">--- Projects ---</p>
+					<Projects />
+
+					<br />
+					<p class="center courier-heading">--- Skills ---</p>
+					<Skills />
+
+					<br />
+					<br />
+				</div>
+
+				<Footer />
+			</div>
+		</div>
+
+		<script type="text/javascript">
+			const floatingElement = document.getElementById("name-graphic");
+
+			// Function to start the animation
+			function startAnimation() {
+				floatingElement.classList.add("pause-animation");
+			}
+
+			// Function to stop the animation
+			function stopAnimation() {
+				floatingElement.classList.remove("pause-animation");
+			}
+
+			let isScrolling = false;
+
+			window.addEventListener("scroll", function () {
+				if (!isScrolling) {
+					stopAnimation();
+					// Throttle the scroll handler (run every 10ms)
+					isScrolling = true;
+
+					setTimeout(function () {
+						const parallax =
+							document.querySelectorAll(".header")[0];
+						let offset = window.pageYOffset; // Get how far the page has scrolled
+
+						parallax.style.top =
+							"-" + (offset * 0.5).toString() + "px"; // Adjust background position based on scroll
+
+						// Reset isScrolling flag after the timeout
+						isScrolling = false;
+						startAnimation();
+					}, 10); // Throttle to run once every 10ms
+				}
+			});
+		</script>
+	</body>
+</html>

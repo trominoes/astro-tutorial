@@ -1,14 +1,16 @@
 html {
-    background-color: #f1f5f9;
-    font-family: sans-serif;
+    background-color: #18181a;
+    font-family: 'Inter', Georgia, 'Times New Roman', Times, serif;
 }
 
 body {
     margin: 0 auto;
     width: 100%;
-    max-width: 80ch;
-    padding: 1rem;
     line-height: 1.5;
+}
+
+.page-body {
+    padding: 0px 7.5%;
 }
 
 * {
@@ -20,86 +22,60 @@ h1 {
     font-size: 2.5rem;
 }
 
-
-html {
-    background-color: #f1f5f9;
-    font-family: sans-serif;
+p, .secondary {
+    font-family: 'Inter', Helvetica, sans-serif;
 }
 
-body {
-    margin: 0 auto;
-    width: 100%;
-    max-width: 80ch;
-    padding: 1rem;
-    line-height: 1.5;
+.tertiary {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 700;
+    font-size: 1em;
 }
 
-* {
-    box-sizing: border-box;
+.courier-heading {
+    color: #999999;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1em;
+    font-style: italic;
 }
 
-h1 {
-    margin: 1rem 0;
-    font-size: 2.5rem;
+.about-text {
+    font-size: 1.2em;
+    line-height: 1.6;
 }
 
-/* nav styles */
-.hamburger {
-    padding-right: 20px;
-    cursor: pointer;
-  }
-  
-  .hamburger .line {
-    display: block;
-    width: 40px;
-    height: 5px;
-    margin-bottom: 10px;
-    background-color: #ff9776;
-  }
-
-.nav-links {
-    width: 100%;
-    top: 5rem;
-    left: 48px;
-    background-color: #ff9776;
-    display: none;
-    margin: 0;
-}
-
-.nav-links a {
-    display: block;
+.center {
     text-align: center;
-    padding: 10px 0;
-    text-decoration: none;
-    font-size: 1.2rem;
+    justify-content: center;
+}
+
+.bold {
     font-weight: bold;
-    text-transform: uppercase;
 }
 
-.nav-links a:hover,
-.nav-links a:focus {
-    background-color: #ff9776;
+.italic {
+    font-style: italic;
 }
 
-.expanded {
-    display: unset;
+hr {
+    border: none;
+    height: 2px;
+    background-color: black;
 }
 
-@media screen and (min-width: 636px) {
-    .nav-links {
-        margin-left: 5em;
-        display: block;
-        position: static;
-        width: auto;
-        background: none;
-    }
+.intro-hr {
+    background-color: white;
+}
 
-    .nav-links a {
-        display: inline-block;
-        padding: 15px 20px;
-    }
+@media screen and (max-width: 1270px) {
 
-    .hamburger {
-        display: none;
-      }
+}
+@media screen and (max-width: 850px) {
+
+}
+@media screen and (max-width: 600px) {
+
+}
+@media screen and (max-width: 400px) {
+    
 }
